@@ -8,11 +8,11 @@ import {
   Typography,
   Row,
   Col,
-  Space
+  Space,
+  Descriptions,
+  Modal
 } from "antd";
 import Graph from "./BarPlot.js";
-import Event from "./Event";
-// import "./App.css";
 import { PoweroffOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
@@ -28,6 +28,7 @@ const Data = props => {
   const [searchText, setsearchText] = useState("");
   const [searchedColumn, setsearchedColumn] = useState("");
   const [visible, setVisible] = useState(false);
+  const [event, setEvent] = useState({});
 
   useEffect(() => {
     axios
@@ -55,10 +56,6 @@ const Data = props => {
       .catch(err => console.log(err));
   }, []);
 
-  const displayInfo = text => {
-    setVisible(true);
-  };
-
   const getColumnSearchProps = dataIndex => ({
     filterDropdown: ({
       setSelectedKeys,
@@ -68,9 +65,6 @@ const Data = props => {
     }) => (
       <div style={{ padding: 8 }}>
         <Input
-          // ref={node => {
-          //   this.searchInput = node;
-          // }}
           placeholder={`Search ${dataIndex}`}
           value={selectedKeys[0]}
           onChange={e =>
@@ -107,11 +101,7 @@ const Data = props => {
         .toString()
         .toLowerCase()
         .includes(value.toLowerCase()),
-    // onFilterDropdownVisibleChange: visible => {
-    //   if (visible) {
-    //     setTimeout(() => this.searchInput.select());
-    //   }
-    // },
+
     render: text =>
       searchedColumn === dataIndex ? (
         <Highlighter
@@ -124,6 +114,24 @@ const Data = props => {
         text
       )
   });
+  const handleOk = e => {
+    console.log(visible);
+    setVisible(false);
+    setEvent({});
+  };
+
+  const displayInfo = event => {
+    //  alert(event.target.innerText);
+    let x = event.target.innerText;
+    axios
+      .get(`https://young-inlet-33955.herokuapp.com/events/${x}`)
+      .then(res => {
+        console.log(res.data);
+        setEvent(res.data);
+      })
+      .catch(err => console.log(err));
+    setVisible(true);
+  };
 
   const columns = [
     {
@@ -132,18 +140,47 @@ const Data = props => {
       key: "_id",
       ...getColumnSearchProps("_id"),
       render: text => (
-        // <Link
-        //   to={{
-        //     pathname: "/events",
-        //     text
-        //   }}
-        // >
-        //   {text}
-        // </Link>
-
         <a>
           {" "}
-          <Event id={text} />
+          <p onClick={displayInfo}>{text}</p>
+          <Modal
+            title="Registration Details "
+            visible={visible}
+            onOk={handleOk}
+            onCancel={handleOk}
+            closable={true}
+            okText="Back"
+            cancelButtonProps={{ style: { display: "none" } }}
+          >
+            <Descriptions
+              bordered
+              column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
+            >
+              <Descriptions.Item label="ID">{event._id}</Descriptions.Item>
+              <Descriptions.Item label="Full Name">
+                {event.name}
+              </Descriptions.Item>
+              <Descriptions.Item label="E-mail">
+                {event.email}
+              </Descriptions.Item>
+              <Descriptions.Item label="Mobile No">
+                {event.mobile}
+              </Descriptions.Item>
+              <Descriptions.Item label="ID Proof">
+                <img
+                  src={event.idProof}
+                  alt="loading"
+                  style={{ width: "80px", height: "80px" }}
+                />
+              </Descriptions.Item>
+              <Descriptions.Item label="Registration Type">
+                {event.regType}
+              </Descriptions.Item>
+              <Descriptions.Item label="Tickets" editing="true">
+                {event.tickets}
+              </Descriptions.Item>
+            </Descriptions>
+          </Modal>
         </a>
       )
     },
