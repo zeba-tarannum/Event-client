@@ -16,8 +16,7 @@ import Event from "./Event";
 import { PoweroffOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
-import { Redirect } from "react-router-dom";
-const { Title } = Typography;
+
 const { Text } = Typography;
 
 const style = { background: "#0092ff", padding: "8px 0" };

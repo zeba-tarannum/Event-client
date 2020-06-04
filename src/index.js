@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import Preview from "./Preview";
 import Data from "./Data";
-import Event from "./Event";
+
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import history from "./history";

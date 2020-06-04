@@ -23,7 +23,7 @@ const BarPlot = ({ data, title, width }) => {
         //height: "225px",
         marginBottom: "15px"
       }}
-      bodyStyle={{ height: "150px", padding: "0" }}
+      bodyStyle={{ height: "150px" }}
     >
       <Chart
         forceFit
@@ -42,7 +42,7 @@ const BarPlot = ({ data, title, width }) => {
       >
         <Tooltip />
         <Axis dataKey="_id" />
-        <Axis dataKey="count" show={false} />
+        {/* <Axis dataKey="count" show={false} /> */}
 
         <Bar
           position="_id*count"
