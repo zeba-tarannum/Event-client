@@ -1,4 +1,44 @@
 @import "~antd/dist/antd.dark.css";
+
+@media only screen and (max-width: 576px) {
+  .ant-modal-body {
+    height: 115vh;
+  }
+}
+
+@media only screen and (min-width: 577px) {
+  .ant-modal-body {
+    height: 83vh;
+  }
+}
+
+.ant-card-bordered {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.ant-divider-horizontal.ant-divider-with-text {
+  /* margin-left: 0;
+  margin-right: 0; */
+  margin-top: 64px;
+  margin-bottom: 34px;
+}
+
+/* .bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+} */
+
+/* .container {
+  position: relative;
+  text-align: center;
+  color: white;
+} */
+
+/* .ant-modal-body {
+  height: 80vh;
+} */
+
 /* .ant-btn-primary :hover {
   color: #fff;
   background: ##a8071a;

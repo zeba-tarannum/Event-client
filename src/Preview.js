@@ -1,28 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Descriptions, Button, Typography, Modal } from "antd";
-import { Link } from "react-router-dom";
-import Success from "./Success";
-import { message } from "antd";
+import image from "./events_images/ticket.png";
 
 import axios from "axios";
 import { PropertySafetyFilled } from "@ant-design/icons";
+import { render } from "@testing-library/react";
 
 // const { Paragraph } = Typography;
 
 function Preview({ values, imageUrl, Submit, Edit }) {
-  // const [id, setId] = useState();
-  // console.log(props);
-  // const { state } = props.location;
-  // const { values, imageUrl } = state;
+  const [id, setId] = useState("");
+  const [visible, setVisible] = useState(false);
   let { name, email, prefix, phone, type, tickets } = values;
   const no = `+${prefix}${phone}`;
   // var bindata = new Buffer(imageUrl.split(",")[1], "base64");
 
-  const onChange = name => {
-    name = name;
-    console.log("Content change:", name);
-  };
-
+  // const onChange = name => {
+  //   name = name;
+  //   console.log("Content change:", name);
+  // };
+  useEffect(() => {}, [visible], [id]);
   const submitData = () => {
     Submit();
     axios
@@ -35,12 +32,19 @@ function Preview({ values, imageUrl, Submit, Edit }) {
         tickets: tickets
       })
       .then(res => {
-        message.success(
-          `Successfully registered for event and id is:${res.data.createdEvent._id}`
-        );
-        // setId(res.data.createdEvent._id);
-        //   return alert(res.data.createdEvent._id);
+        // message.success(
+        //   `Successfully registered for event and id is:${res.data.createdEvent._id}`
+        // );
+
+        console.log(res);
+        setId(res.data.createdEvent._id);
+
+        setVisible(true);
       });
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
   };
 
   return (
@@ -84,6 +88,28 @@ function Preview({ values, imageUrl, Submit, Edit }) {
       >
         Edit
       </Button>
+      {console.log("got id", id)}
+      <Modal
+        visible={visible}
+        onCancel={handleCancel}
+        footer={null}
+        bodyStyle={{ height: "auto" }}
+      >
+        <img
+          src={image}
+          alt="Success"
+          style={{
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "20%"
+          }}
+        />
+        <h3 style={{ textAlign: "center" }}>
+          You have been successfully registered to this event
+        </h3>
+        <h3 style={{ textAlign: "center" }}>Reg id-{id}</h3>
+      </Modal>
       {/* <Link
         to={{
           pathname: "/",

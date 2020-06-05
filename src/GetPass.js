@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import "./App.css";
+import "./App.css";
 import { Button, Modal, Descriptions, Upload, Form, Select, Input } from "antd";
 import RegisterEvent from "./RegisterEvent";
 import Preview from "./Preview";
@@ -43,18 +43,20 @@ function GetPass(props) {
         //  style={{ backgroundColor: "green", color: "white" }}
         onClick={handleReg}
       >
-        Get A Pass
+        Get Pass
       </Button>
 
       <Modal
         title="Registration Details "
+        style={{ top: 20 }}
         visible={visible}
         closable={true}
         okText="Back"
         onCancel={handleCancel}
         //  cancelButtonProps={{ style: { display: "none" } }}
         footer={null}
-        bodyStyle={{ height: "80vh" }}
+        xs={{ height: "200vh" }}
+        //  bodyStyle={{ height: "80vh" }}
       >
         <RegisterEvent
           Submit={handleSubmit}
@@ -64,10 +66,12 @@ function GetPass(props) {
       </Modal>
       <Modal
         title="Preview"
+        style={{ top: 20 }}
         visible={previsible}
         closable={true}
         footer={null}
         onCancel={handleCancel}
+        bodyStyle={{ height: "auto" }}
         // bodyStyle={{ height: "80vh" }}
       >
         <Preview

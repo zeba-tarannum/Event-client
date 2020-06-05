@@ -121,7 +121,6 @@ const Data = props => {
   };
 
   const displayInfo = event => {
-    //  alert(event.target.innerText);
     let x = event.target.innerText;
     axios
       .get(`https://young-inlet-33955.herokuapp.com/events/${x}`)
@@ -142,15 +141,19 @@ const Data = props => {
       render: text => (
         <a>
           {" "}
-          <p onClick={displayInfo}>{text}</p>
+          <p id="data" onClick={displayInfo}>
+            {text}
+          </p>
           <Modal
             title="Registration Details "
+            style={{ top: 20 }}
             visible={visible}
             onOk={handleOk}
             onCancel={handleOk}
             closable={true}
             okText="Back"
             cancelButtonProps={{ style: { display: "none" } }}
+            bodyStyle={{ height: "auto" }}
           >
             <Descriptions
               bordered
@@ -251,7 +254,7 @@ const Data = props => {
       title: "Tickets",
       dataIndex: "tickets",
       key: "tickets",
-      responsive: ["xxl", "xl", "lg"],
+      responsive: ["xxl", "xl"],
       sorter: (a, b) => a.tickets - b.tickets
     }
   ];
@@ -299,17 +302,26 @@ const Data = props => {
       />
 
       <Row>
-        <Col className="gutter-row" span={9} offset={2}>
-          <Graph data={types} title="Registeration by type" width={452.25} />
+        <Col
+          className="gutter-row"
+          xs={{ span: 20, offset: 2 }}
+          lg={{ span: 9, offset: 2 }}
+        >
+          <Graph data={types} title="Registeration by type" />
         </Col>
 
-        <Col className="gutter-row" span={10} offset={1}>
-          <Graph data={date} title="Registration by date" width={500} />
+        <Col
+          className="gutter-row"
+          xs={{ span: 20, offset: 2 }}
+          lg={{ span: 10, offset: 1 }}
+        >
+          <Graph data={date} title="Registration by date" />
         </Col>
       </Row>
 
       <Row>
         <Col span={20} offset={2}>
+          <p>Click on id to get complete details</p>
           <Table
             columns={columns}
             dataSource={data}

@@ -45,6 +45,7 @@ function Header() {
         footer={null}
         style={{ alignItem: "center" }}
         onCancel={handleCancel}
+        bodyStyle={{ height: "auto" }}
       >
         <Login Submit={handleOk} />
       </Modal>
