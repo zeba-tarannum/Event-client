@@ -188,6 +188,7 @@ const Data = props => {
       title: "Full Name",
       dataIndex: "name",
       key: "name",
+      responsive: ["xxl", "xl", "lg", "md", "sm"],
       ...getColumnSearchProps("name"),
       // defaultSortOrder: "ascend"
       sortDirections: ["ascend", "descend"],
@@ -197,6 +198,7 @@ const Data = props => {
       title: "E-mail",
       dataIndex: "email",
       key: "email",
+      responsive: ["xxl", "xl", "lg", "md", "sm"],
       ...getColumnSearchProps("email"),
       sorter: (a, b) => a.email.localeCompare(b.email)
     },
@@ -204,12 +206,14 @@ const Data = props => {
       title: "Mobile",
       dataIndex: "mobile",
       key: "mobile",
+      responsive: ["xxl", "xl", "lg", "md"],
       ...getColumnSearchProps("mobile")
     },
     {
       title: "Id Proof",
       dataIndex: "idProof",
       key: "idProof",
+      responsive: ["xxl", "xl", "lg"],
       render: text => (
         <img
           src={text}
@@ -222,7 +226,7 @@ const Data = props => {
       title: "Registration Type",
       dataIndex: "regType",
       key: "regType",
-
+      responsive: ["xxl", "xl", "lg"],
       filters: [
         {
           text: "Self",
@@ -247,7 +251,7 @@ const Data = props => {
       title: "Tickets",
       dataIndex: "tickets",
       key: "tickets",
-      // defaultSortOrder: "ascend",
+      responsive: ["xxl", "xl", "lg"],
       sorter: (a, b) => a.tickets - b.tickets
     }
   ];
@@ -283,27 +287,6 @@ const Data = props => {
         ghost={false}
         // title="Admin Page"
         extra={[
-          // <Switch
-          //   checkedChildren="LogOut"
-          //   unCheckedChildren="LogIn"
-          //   style={{ marginTop: "8px" }}
-          //   defaultChecked
-          //   onChange={onChange}
-          //   className="switch"
-          // />,
-          //   <Title key="more" key="2" level={3}>
-          //     Admin
-          //   </Title>,
-          //   <Button
-          //     //  type="primary"
-          //  //   style={{ float: "right" }}
-          //     key="1"
-          //     icon={<PoweroffOutlined />}
-          //     size={"small"}
-          //     style={{ marginTop: "8px" }}
-          //     onClick={handleback}
-          //   />
-
           <Text>{props.history.location.state.username}</Text>,
           <Button
             key="1"
@@ -317,8 +300,6 @@ const Data = props => {
 
       <Row>
         <Col className="gutter-row" span={9} offset={2}>
-          {/* <Title level={3}>Grapgh for Reg Types</Title> */}
-
           <Graph data={types} title="Registeration by type" width={452.25} />
         </Col>
 
@@ -327,9 +308,7 @@ const Data = props => {
         </Col>
       </Row>
 
-      <Row
-      //style={{ backgroundColor: "#cac3c282" }}
-      >
+      <Row>
         <Col span={20} offset={2}>
           <Table
             columns={columns}
@@ -338,14 +317,6 @@ const Data = props => {
           />
         </Col>
       </Row>
-      {/* 
-      <Title level={3}>Complete Table</Title> */}
-
-      {/* <Table
-        columns={columns}
-        dataSource={data}
-        pagination={{ position: ["bottomCenter"], defaultPageSize: 5 }}
-      /> */}
     </>
   );
 };

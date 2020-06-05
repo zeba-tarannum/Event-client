@@ -23,12 +23,12 @@ const BarPlot = ({ data, title, width }) => {
         //height: "225px",
         marginBottom: "15px"
       }}
-      bodyStyle={{ height: "150px" }}
+      bodyStyle={{ height: "150px", padding: "0" }}
     >
       <Chart
         forceFit
         height={200}
-        width={width}
+        // width={width}
         data={d}
         scale={scale}
         // type="flex"
