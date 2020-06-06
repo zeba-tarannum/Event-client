@@ -42,12 +42,19 @@ function GetPass({ width }) {
       <Button
         //  style={{ backgroundColor: "green", color: "white" }}
         onClick={handleReg}
-        style={{ width: width ? "100%" : "auto" }}
+        className="mybtn"
+        style={{
+          width: width ? "100%" : "auto",
+          border: width ? "none" : "auto",
+          color: width ? "white" : "auto"
+        }}
       >
         Get Pass
       </Button>
 
       <Modal
+        // mask="false"
+        className="register"
         title="Registration Details "
         style={{ top: 20 }}
         visible={visible}
@@ -56,8 +63,7 @@ function GetPass({ width }) {
         onCancel={handleCancel}
         //  cancelButtonProps={{ style: { display: "none" } }}
         footer={null}
-        xs={{ height: "200vh" }}
-        //  bodyStyle={{ height: "80vh" }}
+        //  xs={{ height: "200vh" }}
       >
         <RegisterEvent
           Submit={handleSubmit}

@@ -32,6 +32,7 @@ function Header() {
 
           <Button
             key="1"
+            className="mybtn"
             // style={{ backgroundColor: "green", color: "white" }}
             onClick={() => setVisible(true)}
           >

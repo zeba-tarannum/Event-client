@@ -1,5 +1,9 @@
 @import "~antd/dist/antd.dark.css";
 
+.ant-modal-confirm .ant-modal-body {
+  height: "auto";
+}
+
 @media only screen and (max-width: 576px) {
   .ant-modal-body {
     height: 115vh;
@@ -13,15 +17,68 @@
 }
 
 body {
-  background-color: #000000db;
+  background-color: #000000cc;
 }
 
-.ant-modal-confirm .ant-modal-body {
-  height: "auto";
+.error {
+  background-color: "yellow";
 }
-.ant-card-bordered {
+.ant-page-header-heading-title {
+  color: #d89614;
+}
+
+.mybtn.ant-btn {
+  color: #d89614;
+}
+
+.mybtn.ant-btn:hover,
+.mtbtn.ant-btn:focus {
+  color: #d89614;
+
+  border-color: #d89614;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+  background-color: rgba(255, 255, 255, 0.45);
+}
+.ant-carousel .slick-dots li button {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.ant-table-container table > thead > tr:first-child th {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+.ant-page-header {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.ant-card {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.ant-table {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.ant-card-cover img {
+  border-radius: 21px;
+}
+
+.ant-divider-horizontal.ant-divider-with-text {
+  color: #d89614;
+}
+
+.ant-divider-horizontal.ant-divider-with-text::before,
+.ant-divider-horizontal.ant-divider-with-text::after {
+  border-top: 1px solid #d89614;
+}
+/* .ant-card-bordered {
   border: 1px solid rgba(0, 0, 0, 0.2);
-}
+} */
+
+/* .ant-table-container table {
+  background-color: #000000bd;
+} */
 
 .ant-divider-horizontal.ant-divider-with-text {
   /* margin-left: 0;

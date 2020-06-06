@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Descriptions, Button, Typography, Modal, Spin } from "antd";
 import image from "./events_images/ticket.png";
-
+import fail from "./events_images/failed.png";
+import { CloseCircleTwoTone } from "@ant-design/icons";
 import axios from "axios";
 import { PropertySafetyFilled } from "@ant-design/icons";
 import { render } from "@testing-library/react";
@@ -11,6 +12,7 @@ import { render } from "@testing-library/react";
 function Preview({ values, imageUrl, Submit, Edit }) {
   const [id, setId] = useState("");
   const [visible, setVisible] = useState(false);
+  const [errorvisible, setErrorVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   let { name, email, prefix, phone, type, tickets } = values;
   const no = `+${prefix}${phone}`;
@@ -45,15 +47,13 @@ function Preview({ values, imageUrl, Submit, Edit }) {
       .catch(err => {
         setLoading(false);
         Submit();
-        Modal.error({
-          title: "Registration Failed",
-          content: "Please try again"
-        });
+        setErrorVisible(true);
       });
   };
 
   const handleCancel = () => {
     setVisible(false);
+    setErrorVisible(false);
   };
 
   return (
@@ -121,6 +121,26 @@ function Preview({ values, imageUrl, Submit, Edit }) {
         />
         <h3 style={{ textAlign: "center" }}>Registration successfull</h3>
         <h3 style={{ textAlign: "center" }}>Reg id-{id}</h3>
+      </Modal>
+
+      <Modal
+        visible={errorvisible}
+        onCancel={handleCancel}
+        footer={null}
+        bodyStyle={{ height: "auto" }}
+      >
+        <img
+          src={fail}
+          alt="Failed"
+          style={{
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "20%"
+          }}
+        />
+        <h3 style={{ textAlign: "center" }}>Registration Failed</h3>
+        <h3 style={{ textAlign: "center" }}>Please try again</h3>
       </Modal>
       {/* <Link
         to={{

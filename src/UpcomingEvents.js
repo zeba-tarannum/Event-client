@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Row, Col, List } from "antd";
+import { Card, Row, Col, List, Divider } from "antd";
 import GetPass from "./GetPass";
 import {
   ShareAltOutlined,
@@ -13,40 +13,48 @@ const { Meta } = Card;
 const data = [
   {
     title: "Event 1",
+    date: "10th June 2020",
     img:
       "https://www.newstatesman.com/sites/all/themes/creative-responsive-theme/images/new_statesman_events.jpg"
   },
   {
     title: "Event 2",
+    date: "30th June 2020",
     img:
       "https://www.newscientist.com/build/images/assets/img/events-homepage-banner-mobile.jpg?ver=f0fd05fbf145e5fa635ebddfc8755947ba031170"
   },
   {
     title: "Event 3",
+    date: "16th July 2020",
     img:
       "https://events.3ds.com/sites/default/files/2019-11/science-age-of-experience-post-event-image-3.jpg"
   },
   {
     title: "Event 4",
+    date: "20th July 2020",
     img: "https://www.abdn.ac.uk/img/450x/news/images/Science_conference.jpg"
   },
   {
     title: "Event 5",
+    date: "25th July 2020",
     img:
       "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE2R9pI?ver=0c21&q=90&h=675&w=830&b=%23FFFFFFFF&aim=true"
   },
   {
     title: "Event 6",
+    date: "10th August 2020",
     img:
       "https://www.mwcbarcelona.com/wp-content/uploads/2019/09/conference-programmes-featured-wide-2x.jpg"
   },
   {
     title: "Event 7",
+    date: "6th September 2020",
     img:
       "https://cwpwp.betterthanpaper.com/wp-content/uploads/2019/03/GMSA-talk-MWC.png"
   },
   {
     title: "Event 8",
+    date: "24th September 2020",
     img:
       "https://i1.wp.com/www.gsma.com/spectrum/wp-content/uploads/2019/11/Luciana-at-WRC-19.png?w=900&ssl=1"
   }
@@ -68,13 +76,14 @@ function UpcomingEvents() {
       renderItem={item => (
         <List.Item style={{ margin: "30px" }}>
           <Card
+            bodyStyle={{ padding: "0px", paddingTop: "10px" }}
             hoverable
-            style={{ width: 240 }}
+            style={{ width: 240, borderRadius: "21px 21px 0px 0px" }}
             cover={
               <img
                 src={item.img}
                 alt={item.title}
-                style={{ height: "50vh", width: "239px" }}
+                style={{ height: "32vh", width: "239px" }}
               />
             }
             actions={[
@@ -86,12 +95,19 @@ function UpcomingEvents() {
             //    style={{ marginLeft: "90px" }}
           >
             <Meta
-              //  title={item.title}
-              description={item.title}
+              title={item.date}
+              //  description={item.title}
               style={{ textAlign: "center" }}
             />
-            <br />
-            <div style={{ textAlign: "center", backgroundColor: "blue" }}>
+            {/* <Divider dashed></Divider> */}
+            <div
+              style={{
+                textAlign: "center",
+                backgroundColor: "#177ddcc7",
+                margin: "10px",
+                borderRadius: "16px"
+              }}
+            >
               <GetPass width="true" />
             </div>
           </Card>
