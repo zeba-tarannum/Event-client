@@ -10,7 +10,8 @@ import {
   Col,
   Space,
   Descriptions,
-  Modal
+  Modal,
+  Spin
 } from "antd";
 import Graph from "./BarPlot.js";
 import { PoweroffOutlined } from "@ant-design/icons";
@@ -29,12 +30,17 @@ const Data = props => {
   const [searchedColumn, setsearchedColumn] = useState("");
   const [visible, setVisible] = useState(false);
   const [event, setEvent] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [tableloading, settableLoading] = useState(true);
+  const [graph1loading, setgraph1Loading] = useState(true);
+  const [graph2loading, setgraph2Loading] = useState(true);
 
   useEffect(() => {
     axios
       .get(`https://young-inlet-33955.herokuapp.com/events`)
       .then(res => {
         // console.log(res.data);
+        settableLoading(false);
         setEvents(res.data.events);
       })
       .catch(err => console.log(err));
@@ -44,16 +50,24 @@ const Data = props => {
       .then(res => {
         // console.log(res.data);
         setTypes(res.data);
+        setgraph1Loading(false);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        setgraph1Loading(false);
+      });
 
     axios
       .get(`https://young-inlet-33955.herokuapp.com/date`)
       .then(res => {
         // console.log(res.data);
         setDate(res.data);
+        setgraph2Loading(false);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        setgraph2Loading(false);
+      });
   }, []);
 
   const getColumnSearchProps = dataIndex => ({
@@ -121,14 +135,19 @@ const Data = props => {
   };
 
   const displayInfo = event => {
+    setLoading(true);
     let x = event.target.innerText;
     axios
       .get(`https://young-inlet-33955.herokuapp.com/events/${x}`)
       .then(res => {
         console.log(res.data);
         setEvent(res.data);
+        setLoading(false);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        setLoading(false);
+      });
     setVisible(true);
   };
 
@@ -155,34 +174,36 @@ const Data = props => {
             cancelButtonProps={{ style: { display: "none" } }}
             bodyStyle={{ height: "auto" }}
           >
-            <Descriptions
-              bordered
-              column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
-            >
-              <Descriptions.Item label="ID">{event._id}</Descriptions.Item>
-              <Descriptions.Item label="Full Name">
-                {event.name}
-              </Descriptions.Item>
-              <Descriptions.Item label="E-mail">
-                {event.email}
-              </Descriptions.Item>
-              <Descriptions.Item label="Mobile No">
-                {event.mobile}
-              </Descriptions.Item>
-              <Descriptions.Item label="ID Proof">
-                <img
-                  src={event.idProof}
-                  alt="loading"
-                  style={{ width: "80px", height: "80px" }}
-                />
-              </Descriptions.Item>
-              <Descriptions.Item label="Registration Type">
-                {event.regType}
-              </Descriptions.Item>
-              <Descriptions.Item label="Tickets" editing="true">
-                {event.tickets}
-              </Descriptions.Item>
-            </Descriptions>
+            <Spin spinning={loading} tip="Loading..." size="large">
+              <Descriptions
+                bordered
+                column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
+              >
+                <Descriptions.Item label="ID">{event._id}</Descriptions.Item>
+                <Descriptions.Item label="Full Name">
+                  {event.name}
+                </Descriptions.Item>
+                <Descriptions.Item label="E-mail">
+                  {event.email}
+                </Descriptions.Item>
+                <Descriptions.Item label="Mobile No">
+                  {event.mobile}
+                </Descriptions.Item>
+                <Descriptions.Item label="ID Proof">
+                  <img
+                    src={event.idProof}
+                    alt="loading"
+                    style={{ width: "80px", height: "80px" }}
+                  />
+                </Descriptions.Item>
+                <Descriptions.Item label="Registration Type">
+                  {event.regType}
+                </Descriptions.Item>
+                <Descriptions.Item label="Tickets" editing="true">
+                  {event.tickets}
+                </Descriptions.Item>
+              </Descriptions>
+            </Spin>
           </Modal>
         </a>
       )
@@ -307,7 +328,9 @@ const Data = props => {
           xs={{ span: 20, offset: 2 }}
           lg={{ span: 9, offset: 2 }}
         >
-          <Graph data={types} title="Registeration by type" />
+          <Spin spinning={graph1loading} tip="Loading..." size="large">
+            <Graph data={types} title="Registeration by type" />
+          </Spin>
         </Col>
 
         <Col
@@ -315,18 +338,23 @@ const Data = props => {
           xs={{ span: 20, offset: 2 }}
           lg={{ span: 10, offset: 1 }}
         >
-          <Graph data={date} title="Registration by date" />
+          <Spin spinning={graph2loading} tip="Loading..." size="large">
+            <Graph data={date} title="Registration by date" />
+          </Spin>
         </Col>
       </Row>
 
       <Row>
         <Col span={20} offset={2}>
           <p>Click on id to get complete details</p>
-          <Table
-            columns={columns}
-            dataSource={data}
-            pagination={{ position: ["bottomCenter"], defaultPageSize: 3 }}
-          />
+          <Spin spinning={tableloading} tip="Loading..." size="large">
+            <Table
+              loading="true"
+              columns={columns}
+              dataSource={data}
+              pagination={{ position: ["bottomCenter"] }}
+            />
+          </Spin>
         </Col>
       </Row>
     </>

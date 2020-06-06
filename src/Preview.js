@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Descriptions, Button, Typography, Modal } from "antd";
+import { Descriptions, Button, Typography, Modal, Spin } from "antd";
 import image from "./events_images/ticket.png";
 
 import axios from "axios";
@@ -11,6 +11,7 @@ import { render } from "@testing-library/react";
 function Preview({ values, imageUrl, Submit, Edit }) {
   const [id, setId] = useState("");
   const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   let { name, email, prefix, phone, type, tickets } = values;
   const no = `+${prefix}${phone}`;
   // var bindata = new Buffer(imageUrl.split(",")[1], "base64");
@@ -21,7 +22,7 @@ function Preview({ values, imageUrl, Submit, Edit }) {
   // };
   useEffect(() => {}, [visible], [id]);
   const submitData = () => {
-    Submit();
+    setLoading(true);
     axios
       .post(`https://young-inlet-33955.herokuapp.com/events`, {
         name: name,
@@ -35,11 +36,19 @@ function Preview({ values, imageUrl, Submit, Edit }) {
         // message.success(
         //   `Successfully registered for event and id is:${res.data.createdEvent._id}`
         // );
-
+        Submit();
         console.log(res);
         setId(res.data.createdEvent._id);
-
+        setLoading(false);
         setVisible(true);
+      })
+      .catch(err => {
+        setLoading(false);
+        Submit();
+        Modal.error({
+          title: "Registration Failed",
+          content: "Please try again"
+        });
       });
   };
 
@@ -49,45 +58,50 @@ function Preview({ values, imageUrl, Submit, Edit }) {
 
   return (
     <div>
-      <Descriptions
-        bordered
-        column={{ xxl: 2, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
-      >
-        <Descriptions.Item label="Full Name" editing="true">
-          {name}
-        </Descriptions.Item>
-        <Descriptions.Item label="E-mail">{email}</Descriptions.Item>
-        <Descriptions.Item label="Phone">
-          +{prefix}
-          {phone}
-        </Descriptions.Item>
-        <Descriptions.Item label="ID">
-          {" "}
-          {imageUrl ? (
-            <img src={imageUrl} alt="id" style={{ width: "100%" }} />
-          ) : (
-            <p>Upload an id proof</p>
-          )}{" "}
-        </Descriptions.Item>
+      <Spin spinning={loading} tip="Loading..." size="large">
+        <Descriptions
+          bordered
+          column={{ xxl: 2, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
+        >
+          <Descriptions.Item label="Full Name" editing="true">
+            {name}
+          </Descriptions.Item>
+          <Descriptions.Item label="E-mail">{email}</Descriptions.Item>
+          <Descriptions.Item label="Phone">
+            +{prefix}
+            {phone}
+          </Descriptions.Item>
 
-        <Descriptions.Item label="Registration Type">{type}</Descriptions.Item>
-        <Descriptions.Item label="Tickets">{tickets}</Descriptions.Item>
-      </Descriptions>
-      <Button
-        type="primary"
-        htmlType="submit"
-        style={{ marginTop: "40px" }}
-        onClick={submitData}
-      >
-        Submit
-      </Button>
-      <Button
-        type="primary"
-        style={{ marginTop: "40px", marginLeft: "40px" }}
-        onClick={Edit}
-      >
-        Edit
-      </Button>
+          <Descriptions.Item label="ID">
+            {" "}
+            {imageUrl ? (
+              <img src={imageUrl} alt="id" style={{ width: "100%" }} />
+            ) : (
+              <p>Upload an id proof</p>
+            )}{" "}
+          </Descriptions.Item>
+
+          <Descriptions.Item label="Registration Type">
+            {type}
+          </Descriptions.Item>
+          <Descriptions.Item label="Tickets">{tickets}</Descriptions.Item>
+        </Descriptions>
+        <Button
+          type="primary"
+          htmlType="submit"
+          style={{ marginTop: "40px" }}
+          onClick={submitData}
+        >
+          Submit
+        </Button>
+        <Button
+          type="primary"
+          style={{ marginTop: "40px", marginLeft: "40px" }}
+          onClick={Edit}
+        >
+          Edit
+        </Button>
+      </Spin>
       {console.log("got id", id)}
       <Modal
         visible={visible}

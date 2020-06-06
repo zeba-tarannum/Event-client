@@ -12,6 +12,13 @@
   }
 }
 
+body {
+  background-color: #000000db;
+}
+
+.ant-modal-confirm .ant-modal-body {
+  height: "auto";
+}
 .ant-card-bordered {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }

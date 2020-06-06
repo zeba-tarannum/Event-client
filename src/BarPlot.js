@@ -1,13 +1,13 @@
 import { Chart, Tooltip, Axis, Bar } from "viser-react";
 
-import { Card } from "antd";
+import { Card, Spin } from "antd";
 import React from "react";
 // import "./App.css";
 
 const scale = [
   {
     dataKey: "count",
-    tickInterval: 2
+    tickInterval: 8
   }
 ];
 
@@ -23,11 +23,11 @@ const BarPlot = ({ data, title, width }) => {
         //height: "225px",
         marginBottom: "15px"
       }}
-      bodyStyle={{ height: "150px", padding: "0" }}
+      bodyStyle={{ height: "200px", padding: "0" }}
     >
       <Chart
         forceFit
-        height={200}
+        height={260}
         // width={width}
         data={d}
         scale={scale}
