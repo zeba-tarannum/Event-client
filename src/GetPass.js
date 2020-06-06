@@ -4,7 +4,7 @@ import { Button, Modal, Descriptions, Upload, Form, Select, Input } from "antd";
 import RegisterEvent from "./RegisterEvent";
 import Preview from "./Preview";
 
-function GetPass(props) {
+function GetPass({ width }) {
   const [visible, setVisible] = useState(false);
   const [previsible, setPreVisible] = useState(false);
   const [imageUrl, setimageUrl] = useState("");
@@ -42,6 +42,7 @@ function GetPass(props) {
       <Button
         //  style={{ backgroundColor: "green", color: "white" }}
         onClick={handleReg}
+        style={{ width: width ? "100%" : "auto" }}
       >
         Get Pass
       </Button>

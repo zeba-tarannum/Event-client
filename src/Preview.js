@@ -105,9 +105,7 @@ function Preview({ values, imageUrl, Submit, Edit }) {
             width: "20%"
           }}
         />
-        <h3 style={{ textAlign: "center" }}>
-          You have been successfully registered to this event
-        </h3>
+        <h3 style={{ textAlign: "center" }}>Registration successfull</h3>
         <h3 style={{ textAlign: "center" }}>Reg id-{id}</h3>
       </Modal>
       {/* <Link

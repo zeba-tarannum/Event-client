@@ -1,6 +1,12 @@
 import React from "react";
 import { Card, Row, Col, List } from "antd";
 import GetPass from "./GetPass";
+import {
+  ShareAltOutlined,
+  HeartOutlined,
+  CheckCircleOutlined,
+  CalendarOutlined
+} from "@ant-design/icons";
 
 const { Meta } = Card;
 
@@ -71,7 +77,12 @@ function UpcomingEvents() {
                 style={{ height: "50vh", width: "239px" }}
               />
             }
-            actions={[<GetPass />]}
+            actions={[
+              <HeartOutlined />,
+              <CheckCircleOutlined />,
+              <ShareAltOutlined />,
+              <CalendarOutlined />
+            ]}
             //    style={{ marginLeft: "90px" }}
           >
             <Meta
@@ -79,6 +90,10 @@ function UpcomingEvents() {
               description={item.title}
               style={{ textAlign: "center" }}
             />
+            <br />
+            <div style={{ textAlign: "center", backgroundColor: "blue" }}>
+              <GetPass width="true" />
+            </div>
           </Card>
         </List.Item>
       )}
