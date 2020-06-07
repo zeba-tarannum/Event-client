@@ -6,6 +6,15 @@ function Event({ id }) {
   const [event, setEvent] = useState({});
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  let url;
+
+  if (process.env.NODE_ENV === "development") {
+    url = "http://localhost:8000";
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    url = "https://young-inlet-33955.herokuapp.com";
+  }
 
   const handleOk = e => {
     console.log(visible);
@@ -17,7 +26,7 @@ function Event({ id }) {
     let x = event.target.innerText;
     setVisible(true);
     axios
-      .get(`https://young-inlet-33955.herokuapp.com/events/${x}`)
+      .get(`${url}/events/${x}`)
       .then(res => {
         setLoading(false);
         console.log(res.data);

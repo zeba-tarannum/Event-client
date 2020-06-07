@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import "./App.css";
 import { PageHeader, Button, Modal } from "antd";
 import GetPass from "./GetPass";
 import Login from "./Login";
@@ -30,12 +29,7 @@ function Header() {
         extra={[
           <GetPass />,
 
-          <Button
-            key="1"
-            className="mybtn"
-            // style={{ backgroundColor: "green", color: "white" }}
-            onClick={() => setVisible(true)}
-          >
+          <Button key="1" className="mybtn" onClick={() => setVisible(true)}>
             Login as admin
           </Button>
         ]}

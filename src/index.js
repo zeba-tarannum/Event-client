@@ -10,11 +10,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import history from "./history";
 import RegisterEvent from "./RegisterEvent";
 ReactDOM.render(
-  // <React.StrictMode>
-  //   <Router>
-  //   <App />
-  // </Router>
-  // </React.StrictMode>,
   <Router history={history}>
     <Route exact path="/" component={App} />
     <Route path="/register" component={RegisterEvent} />

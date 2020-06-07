@@ -11,12 +11,20 @@ function Preview({ values, imageUrl, Submit, Edit }) {
   const [loading, setLoading] = useState(false);
   let { name, email, prefix, phone, type, tickets } = values;
   const no = `+${prefix}${phone}`;
+  let url;
 
+  if (process.env.NODE_ENV === "development") {
+    url = "http://localhost:8000";
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    url = "https://young-inlet-33955.herokuapp.com";
+  }
   useEffect(() => {}, [visible], [id]);
   const submitData = () => {
     setLoading(true);
     axios
-      .post(`https://young-inlet-33955.herokuapp.com/events`, {
+      .post(`${url}/events`, {
         name: name,
         mobile: no,
         email: email,
@@ -25,9 +33,6 @@ function Preview({ values, imageUrl, Submit, Edit }) {
         tickets: tickets
       })
       .then(res => {
-        // message.success(
-        //   `Successfully registered for event and id is:${res.data.createdEvent._id}`
-        // );
         Submit();
         console.log(res);
         setId(res.data.createdEvent._id);
@@ -132,14 +137,6 @@ function Preview({ values, imageUrl, Submit, Edit }) {
         <h3 style={{ textAlign: "center" }}>Registration Failed</h3>
         <h3 style={{ textAlign: "center" }}>Please try again</h3>
       </Modal>
-      {/* <Link
-        to={{
-          pathname: "/",
-          state
-        }}
-      >
-        Edit
-      </Link> */}
     </div>
   );
 }

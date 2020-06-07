@@ -28,10 +28,19 @@ const Data = props => {
   const [tableloading, settableLoading] = useState(true);
   const [graph1loading, setgraph1Loading] = useState(true);
   const [graph2loading, setgraph2Loading] = useState(true);
+  let url;
+
+  if (process.env.NODE_ENV === "development") {
+    url = "http://localhost:8000";
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    url = "https://young-inlet-33955.herokuapp.com";
+  }
 
   useEffect(() => {
     axios
-      .get(`https://young-inlet-33955.herokuapp.com/events`)
+      .get(`${url}/events`)
       .then(res => {
         // console.log(res.data);
         settableLoading(false);
@@ -40,7 +49,7 @@ const Data = props => {
       .catch(err => console.log(err));
 
     axios
-      .get(`https://young-inlet-33955.herokuapp.com/events/regType`)
+      .get(`${url}/events/regType`)
       .then(res => {
         // console.log(res.data);
         setTypes(res.data);
@@ -52,7 +61,7 @@ const Data = props => {
       });
 
     axios
-      .get(`https://young-inlet-33955.herokuapp.com/date`)
+      .get(`${url}/date`)
       .then(res => {
         // console.log(res.data);
         setDate(res.data);
@@ -62,7 +71,7 @@ const Data = props => {
         console.log(err);
         setgraph2Loading(false);
       });
-  }, []);
+  }, [url]);
 
   const getColumnSearchProps = dataIndex => ({
     filterDropdown: ({
@@ -213,16 +222,11 @@ const Data = props => {
     confirm();
     setsearchText(selectedKeys[0]);
     setsearchedColumn(dataIndex);
-    // this.setState({
-    //   searchText: selectedKeys[0],
-    //   searchedColumn: dataIndex,
-    // });
   };
 
   const handleReset = clearFilters => {
     clearFilters();
     setsearchText("");
-    // this.setState({ searchText: '' });
   };
 
   return (
@@ -277,14 +281,6 @@ const Data = props => {
           <p>Click on id to get complete details</p>
           <Spin spinning={tableloading} tip="Loading..." size="large">
             <Table
-              // onRow={(record, rowIndex) => {
-              //   return {
-              //     onClick: event => {
-              //       displayInfo(record._id);
-              //       console.log(record._id, typeof record._id);
-              //     }
-              //   };
-              // }}
               loading="true"
               columns={columns}
               dataSource={data}

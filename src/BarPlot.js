@@ -1,5 +1,4 @@
 import { Chart, Tooltip, Axis, Bar } from "viser-react";
-
 import { Card } from "antd";
 import React from "react";
 
@@ -10,7 +9,7 @@ const scale = [
   }
 ];
 
-const BarPlot = ({ data, title, width }) => {
+const BarPlot = ({ data, title }) => {
   const d = data.sort((a, b) => (a._id > b._id ? 1 : b._id > a._id ? -1 : 0));
   console.log(d);
   return (
@@ -19,45 +18,10 @@ const BarPlot = ({ data, title, width }) => {
       bordered={false}
       bodyStyle={{ height: "200px", padding: "0" }}
     >
-      <Chart
-        forceFit
-        height={260}
-        // width={width}
-        data={d}
-        scale={scale}
-        // type="flex"
-        // justify="center"
-        // align="middle"
-        // padding-right={50}
-        //padding-right={50}
-        // renderer={"svg"}
-        //  padding={[0, 10, 0, 0]}
-        // padding={{ right: 30 }}
-      >
+      <Chart forceFit height={260} data={d} scale={scale}>
         <Tooltip />
-        <Axis dataKey="_id" />
-        {/* <Axis dataKey="count" show={false} /> */}
-
-        <Bar
-          position="_id*count"
-          // color={"red"}
-          label="count"
-          labelFontColor="red"
-          // label={[
-          //   "count",
-          //   {
-          //     useHtml: true,
-          //     htmlTemplate: function htmlTemplate(text, item) {
-          //       return (
-          //         '<span class="g2-label-item"><p class="g2-label-item-value">' +
-          //         "count:" +
-          //         text +
-          //         "</p></div>"
-          //       );
-          //     }
-          //   }
-          // ]}
-        />
+        <Axis />
+        <Bar position="_id*count" label="count" labelFontColor="red" />
       </Chart>
     </Card>
   );

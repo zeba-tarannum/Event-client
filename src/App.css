@@ -32,17 +32,6 @@ body {
   background: rgb(87, 79, 80);
 }
 
-/* .mybtn.ant-btn {
-  color: #d89614;
-} */
-
-/* .mybtn.ant-btn:hover,
-.mtbtn.ant-btn:focus {
-  color: #d89614;
-
-  border-color: #d89614;
-} */
-
 .ant-carousel .slick-dots li.slick-active button {
   background-color: rgba(255, 255, 255, 0.45);
 }
@@ -65,10 +54,6 @@ body {
   background-color: rgba(255, 255, 255, 0.04);
 }
 
-/* .ant-card-cover img {
-  border-radius: 21px;
-} */
-
 .ant-divider-horizontal.ant-divider-with-text {
   color: #d89614;
 }
@@ -77,58 +62,7 @@ body {
 .ant-divider-horizontal.ant-divider-with-text::after {
   border-top: 1px solid #d89614;
 }
-/* .ant-card-bordered {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-} */
-
-/* .ant-table-container table {
-  background-color: #000000bd;
-} */
 
 .ant-divider-horizontal.ant-divider-with-text {
-  /* margin-left: 0;
-  margin-right: 0; */
   margin-top: 64px;
-  /* margin-bottom: 34px; */
 }
-
-/* .bottom-right {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-} */
-
-/* .container {
-  position: relative;
-  text-align: center;
-  color: white;
-} */
-
-/* .ant-modal-body {
-  height: 80vh;
-} */
-
-/* .ant-btn-primary :hover {
-  color: #fff;
-  background: ##a8071a;
-  border-color: ##a8071a;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
-  -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-} */
-
-/* #complete {
-  background-color: #cac3c282;
-} */
-
-/* .site-page-header {
-  border: 1px solid green;
-}
-
-.switch.ant-switch-checked {
-  background-color: green;
-}*/
-
-/* .g2-label-item-value {
-  color: pink;
-}  */

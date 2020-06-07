@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-
 import "./index.css";
 import { Form, Input, Select, Button, Upload, message } from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-
-// import history from "./history";
 
 async function getBase64(img, callback) {
   const reader = new FileReader();
@@ -69,7 +66,6 @@ const dummyRequest = ({ file, onSuccess }) => {
   setTimeout(() => {
     if (file) {
       onSuccess("ok");
-      //  message.success(`${file.name} file uploaded successfully`);
     }
   }, 0);
 };
@@ -98,18 +94,10 @@ const RegistrationForm = props => {
       return;
     }
     if (info.file.status === "done") {
-      // Get this url from response in real world.
-      getBase64(
-        info.file.originFileObj,
-        imageUrl => {
-          setUrl(imageUrl);
-          setLoading(false);
-        }
-        // this.setState({
-        //   imageUrl,
-        //   loading: false,
-        // }),
-      );
+      getBase64(info.file.originFileObj, imageUrl => {
+        setUrl(imageUrl);
+        setLoading(false);
+      });
     }
   };
 
@@ -123,12 +111,6 @@ const RegistrationForm = props => {
       form.setFieldsValue({ tickets: "" });
     }
   };
-  // const handleSubmit = values => {
-  //   console.log("Received values of form: ", values);
-  //   props.Submit(imageUrl);
-  //   // props.history.push("/preview", { values, imageUrl });
-  //   // form.resetFields();
-  // };
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle initialValue="91">
@@ -258,15 +240,6 @@ const RegistrationForm = props => {
             uploadButton
           )}
         </Upload>
-        {/* <Upload
-          accept=".png,.jpeg"
-          customRequest={dummyRequest}
-          multiple="false"
-        >
-          <Button>
-            <UploadOutlined /> Click to Upload
-          </Button>
-        </Upload> */}
       </Form.Item>
 
       <Form.Item label="Registration type :">

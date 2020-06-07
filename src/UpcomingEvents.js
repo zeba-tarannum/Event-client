@@ -87,7 +87,6 @@ function UpcomingEvents() {
               description={item.title}
               style={{ textAlign: "center" }}
             />
-            {/* <Divider dashed></Divider> */}
             <div
               style={{
                 textAlign: "center",
@@ -102,55 +101,6 @@ function UpcomingEvents() {
         </List.Item>
       )}
     />
-    // <div className="site-card-wrapper">
-    //   <Row gutter={16}>
-    //     <Col span={8}>
-    //       <Card
-    //         hoverable
-    //         style={{ width: 240 }}
-    //         cover={
-    //           <img
-    //             src={image1}
-    //             alt="event1"
-    //             style={{ height: "44vh", width: "40vh" }}
-    //           />
-    //         }
-    //       >
-    //         <Meta title="Europe Street beat" description="www.instagram.com" />
-    //       </Card>
-    //     </Col>
-    //     <Col span={8}>
-    //       <Card
-    //         hoverable
-    //         style={{ width: 240 }}
-    //         cover={
-    //           <img
-    //             src={image2}
-    //             alt="event1"
-    //             style={{ height: "44vh", width: "40vh" }}
-    //           />
-    //         }
-    //       >
-    //         <Meta title="Europe Street beat" description="www.instagram.com" />
-    //       </Card>
-    //     </Col>
-    //     <Col span={8}>
-    //       <Card
-    //         hoverable
-    //         style={{ width: 240 }}
-    //         cover={
-    //           <img
-    //             src={image3}
-    //             alt="event1"
-    //             style={{ height: "44vh", width: "40vh" }}
-    //           />
-    //         }
-    //       >
-    //         <Meta title="Europe Street beat" description="www.instagram.com" />
-    //       </Card>
-    //     </Col>
-    //   </Row>
-    // </div>
   );
 }
 

@@ -53,7 +53,6 @@ function GetPass({ width }) {
       </Button>
 
       <Modal
-        // mask="false"
         className="register"
         title="Registration Details "
         style={{ top: 20 }}
@@ -61,9 +60,7 @@ function GetPass({ width }) {
         closable={true}
         okText="Back"
         onCancel={handleCancel}
-        //  cancelButtonProps={{ style: { display: "none" } }}
         footer={null}
-        //  xs={{ height: "200vh" }}
       >
         <RegisterEvent
           Submit={handleSubmit}
@@ -79,7 +76,6 @@ function GetPass({ width }) {
         footer={null}
         onCancel={handleCancel}
         bodyStyle={{ height: "auto" }}
-        // bodyStyle={{ height: "80vh" }}
       >
         <Preview
           values={values}
