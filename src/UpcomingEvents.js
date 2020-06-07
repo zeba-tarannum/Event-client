@@ -23,9 +23,10 @@ const data = [
     img: "https://www.eventcity.co.uk/media/2452/homepage-1.jpg"
   },
   {
-    title: "Scientce conference",
+    title: "Linux foundation",
     date: "20th July 2020",
-    img: "https://www.abdn.ac.uk/img/450x/news/images/Science_conference.jpg"
+    img:
+      "https://events.linuxfoundation.org/wp-content/uploads/2019/09/welcome.jpg"
   },
   {
     title: "Microsoft",

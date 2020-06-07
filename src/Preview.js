@@ -51,7 +51,7 @@ function Preview({ values, imageUrl, Submit, Edit }) {
       <Spin spinning={loading} tip="Loading..." size="large">
         <Descriptions
           bordered
-          column={{ xxl: 2, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
+          column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
         >
           <Descriptions.Item label="Full Name" editing="true">
             {name}
@@ -92,7 +92,7 @@ function Preview({ values, imageUrl, Submit, Edit }) {
           Edit
         </Button>
       </Spin>
-      {console.log("got id", id)}
+
       <Modal
         visible={visible}
         onCancel={handleCancel}
