@@ -4,8 +4,6 @@ import image from "./events_images/ticket.png";
 import fail from "./events_images/failed.png";
 import axios from "axios";
 
-// const { Paragraph } = Typography;
-
 function Preview({ values, imageUrl, Submit, Edit }) {
   const [id, setId] = useState("");
   const [visible, setVisible] = useState(false);
@@ -13,12 +11,7 @@ function Preview({ values, imageUrl, Submit, Edit }) {
   const [loading, setLoading] = useState(false);
   let { name, email, prefix, phone, type, tickets } = values;
   const no = `+${prefix}${phone}`;
-  // var bindata = new Buffer(imageUrl.split(",")[1], "base64");
 
-  // const onChange = name => {
-  //   name = name;
-  //   console.log("Content change:", name);
-  // };
   useEffect(() => {}, [visible], [id]);
   const submitData = () => {
     setLoading(true);
