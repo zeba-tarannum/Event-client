@@ -18,11 +18,11 @@ const BarPlot = ({ data, title, width }) => {
     <Card
       title={title}
       bordered={false}
-      style={{
-        marginTop: "15px",
-        //height: "225px",
-        marginBottom: "15px"
-      }}
+      // style={{
+      //   marginTop: "15px",
+      //   //height: "225px",
+      //   marginBottom: "15px"
+      // }}
       bodyStyle={{ height: "200px", padding: "0" }}
     >
       <Chart

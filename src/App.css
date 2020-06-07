@@ -20,11 +20,16 @@ body {
   background-color: #000000cc;
 }
 
-.error {
-  background-color: "yellow";
+.ant-list .ant-card {
+  background-color: rgba(255, 255, 255, 0.04);
 }
+
 .ant-page-header-heading-title {
   color: #d89614;
+}
+
+.ant-table tbody > tr.ant-table-row:hover > td {
+  background: rgb(87, 79, 80);
 }
 
 .mybtn.ant-btn {
@@ -60,9 +65,9 @@ body {
   background-color: rgba(255, 255, 255, 0.04);
 }
 
-.ant-card-cover img {
+/* .ant-card-cover img {
   border-radius: 21px;
-}
+} */
 
 .ant-divider-horizontal.ant-divider-with-text {
   color: #d89614;
@@ -84,7 +89,7 @@ body {
   /* margin-left: 0;
   margin-right: 0; */
   margin-top: 64px;
-  margin-bottom: 34px;
+  /* margin-bottom: 34px; */
 }
 
 /* .bottom-right {

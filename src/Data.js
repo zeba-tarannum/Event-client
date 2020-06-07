@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Event from "./Event";
 import axios from "axios";
 import {
   Table,
@@ -68,7 +69,7 @@ const Data = props => {
         console.log(err);
         setgraph2Loading(false);
       });
-  }, []);
+  }, [visible]);
 
   const getColumnSearchProps = dataIndex => ({
     filterDropdown: ({
@@ -134,9 +135,9 @@ const Data = props => {
     setEvent({});
   };
 
-  const displayInfo = event => {
+  const displayInfo = id => {
     setLoading(true);
-    let x = event.target.innerText;
+    let x = id;
     axios
       .get(`https://young-inlet-33955.herokuapp.com/events/${x}`)
       .then(res => {
@@ -157,56 +158,7 @@ const Data = props => {
       dataIndex: "_id",
       key: "_id",
       ...getColumnSearchProps("_id"),
-      render: text => (
-        <a>
-          {" "}
-          <p id="data" onClick={displayInfo}>
-            {text}
-          </p>
-          <Modal
-            title="Registration Details "
-            style={{ top: 20 }}
-            visible={visible}
-            onOk={handleOk}
-            onCancel={handleOk}
-            closable={true}
-            okText="Back"
-            cancelButtonProps={{ style: { display: "none" } }}
-            bodyStyle={{ height: "auto" }}
-          >
-            <Spin spinning={loading} tip="Loading..." size="large">
-              <Descriptions
-                bordered
-                column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
-              >
-                <Descriptions.Item label="ID">{event._id}</Descriptions.Item>
-                <Descriptions.Item label="Full Name">
-                  {event.name}
-                </Descriptions.Item>
-                <Descriptions.Item label="E-mail">
-                  {event.email}
-                </Descriptions.Item>
-                <Descriptions.Item label="Mobile No">
-                  {event.mobile}
-                </Descriptions.Item>
-                <Descriptions.Item label="ID Proof">
-                  <img
-                    src={event.idProof}
-                    alt="loading"
-                    style={{ width: "80px", height: "80px" }}
-                  />
-                </Descriptions.Item>
-                <Descriptions.Item label="Registration Type">
-                  {event.regType}
-                </Descriptions.Item>
-                <Descriptions.Item label="Tickets" editing="true">
-                  {event.tickets}
-                </Descriptions.Item>
-              </Descriptions>
-            </Spin>
-          </Modal>
-        </a>
-      )
+      render: text => <Event id={text} />
     },
     {
       title: "Full Name",
@@ -321,7 +273,7 @@ const Data = props => {
           />
         ]}
       />
-
+      <br />
       <Row>
         <Col
           className="gutter-row"
@@ -346,9 +298,18 @@ const Data = props => {
 
       <Row>
         <Col span={20} offset={2}>
+          <br />
           <p>Click on id to get complete details</p>
           <Spin spinning={tableloading} tip="Loading..." size="large">
             <Table
+              // onRow={(record, rowIndex) => {
+              //   return {
+              //     onClick: event => {
+              //       displayInfo(record._id);
+              //       console.log(record._id, typeof record._id);
+              //     }
+              //   };
+              // }}
               loading="true"
               columns={columns}
               dataSource={data}

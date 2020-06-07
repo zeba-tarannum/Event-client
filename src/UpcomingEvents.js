@@ -15,7 +15,7 @@ const data = [
     title: "Event 1",
     date: "10th June 2020",
     img:
-      "https://www.newstatesman.com/sites/all/themes/creative-responsive-theme/images/new_statesman_events.jpg"
+      "https://www.nationalgeographic.com/content/dam/ngdotcom/rights-exempt/events/home/gold-coast_cr-scott-belzner.adapt.1900.1.jpg"
   },
   {
     title: "Event 2",
@@ -26,8 +26,7 @@ const data = [
   {
     title: "Event 3",
     date: "16th July 2020",
-    img:
-      "https://events.3ds.com/sites/default/files/2019-11/science-age-of-experience-post-event-image-3.jpg"
+    img: "https://www.eventcity.co.uk/media/2452/homepage-1.jpg"
   },
   {
     title: "Event 4",
@@ -63,22 +62,23 @@ const data = [
 function UpcomingEvents() {
   return (
     <List
+      style={{ margin: "0 15%" }}
       grid={{
         gutter: 16,
         xs: 1,
         sm: 2,
         md: 3,
-        lg: 4,
-        xl: 4,
+        lg: 3,
+        xl: 3,
         xxl: 3
       }}
       dataSource={data}
       renderItem={item => (
-        <List.Item style={{ margin: "30px" }}>
+        <List.Item style={{ marginTop: "3vh" }}>
           <Card
             bodyStyle={{ padding: "0px", paddingTop: "10px" }}
             hoverable
-            style={{ width: 240, borderRadius: "21px 21px 0px 0px" }}
+            style={{ width: 240 }}
             cover={
               <img
                 src={item.img}
@@ -86,12 +86,12 @@ function UpcomingEvents() {
                 style={{ height: "32vh", width: "239px" }}
               />
             }
-            actions={[
-              <HeartOutlined />,
-              <CheckCircleOutlined />,
-              <ShareAltOutlined />,
-              <CalendarOutlined />
-            ]}
+            // actions={[
+            //   <HeartOutlined />,
+            //   <CheckCircleOutlined />,
+            //   <ShareAltOutlined />,
+            //   <CalendarOutlined />
+            // ]}
             //    style={{ marginLeft: "90px" }}
           >
             <Meta
