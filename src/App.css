@@ -4,15 +4,15 @@
   height: "auto";
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 480px) {
   .ant-modal-body {
-    height: 115vh;
+    height: 101vh;
   }
 }
 
-@media only screen and (min-width: 577px) {
+@media only screen and (min-width: 481px) {
   .ant-modal-body {
-    height: 83vh;
+    height: 80vh;
   }
 }
 
@@ -24,24 +24,24 @@ body {
   background-color: rgba(255, 255, 255, 0.04);
 }
 
-.ant-page-header-heading-title {
+/* .ant-page-header-heading-title {
   color: #d89614;
-}
+} */
 
 .ant-table tbody > tr.ant-table-row:hover > td {
   background: rgb(87, 79, 80);
 }
 
-.mybtn.ant-btn {
+/* .mybtn.ant-btn {
   color: #d89614;
-}
+} */
 
-.mybtn.ant-btn:hover,
+/* .mybtn.ant-btn:hover,
 .mtbtn.ant-btn:focus {
   color: #d89614;
 
   border-color: #d89614;
-}
+} */
 
 .ant-carousel .slick-dots li.slick-active button {
   background-color: rgba(255, 255, 255, 0.45);

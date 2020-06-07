@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { Button, Modal, Descriptions, Upload, Form, Select, Input } from "antd";
+import { Button, Modal } from "antd";
 import RegisterEvent from "./RegisterEvent";
 import Preview from "./Preview";
 
@@ -49,7 +49,7 @@ function GetPass({ width }) {
           color: width ? "white" : "auto"
         }}
       >
-        Get Pass
+        Get a pass
       </Button>
 
       <Modal

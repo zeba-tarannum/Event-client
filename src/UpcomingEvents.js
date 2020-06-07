@@ -1,58 +1,52 @@
 import React from "react";
-import { Card, Row, Col, List, Divider } from "antd";
+import { Card, List } from "antd";
 import GetPass from "./GetPass";
-import {
-  ShareAltOutlined,
-  HeartOutlined,
-  CheckCircleOutlined,
-  CalendarOutlined
-} from "@ant-design/icons";
 
 const { Meta } = Card;
 
 const data = [
   {
-    title: "Event 1",
+    title: "National Geographic",
     date: "10th June 2020",
     img:
       "https://www.nationalgeographic.com/content/dam/ngdotcom/rights-exempt/events/home/gold-coast_cr-scott-belzner.adapt.1900.1.jpg"
   },
   {
-    title: "Event 2",
+    title: "New Scientist",
     date: "30th June 2020",
     img:
       "https://www.newscientist.com/build/images/assets/img/events-homepage-banner-mobile.jpg?ver=f0fd05fbf145e5fa635ebddfc8755947ba031170"
   },
   {
-    title: "Event 3",
+    title: "Event city",
     date: "16th July 2020",
     img: "https://www.eventcity.co.uk/media/2452/homepage-1.jpg"
   },
   {
-    title: "Event 4",
+    title: "Scientce conference",
     date: "20th July 2020",
     img: "https://www.abdn.ac.uk/img/450x/news/images/Science_conference.jpg"
   },
   {
-    title: "Event 5",
+    title: "Microsoft",
     date: "25th July 2020",
     img:
       "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE2R9pI?ver=0c21&q=90&h=675&w=830&b=%23FFFFFFFF&aim=true"
   },
   {
-    title: "Event 6",
+    title: "Mwc barcelona conference",
     date: "10th August 2020",
     img:
       "https://www.mwcbarcelona.com/wp-content/uploads/2019/09/conference-programmes-featured-wide-2x.jpg"
   },
   {
-    title: "Event 7",
+    title: "Intelligent connectivity",
     date: "6th September 2020",
     img:
       "https://cwpwp.betterthanpaper.com/wp-content/uploads/2019/03/GMSA-talk-MWC.png"
   },
   {
-    title: "Event 8",
+    title: "Spectrum",
     date: "24th September 2020",
     img:
       "https://i1.wp.com/www.gsma.com/spectrum/wp-content/uploads/2019/11/Luciana-at-WRC-19.png?w=900&ssl=1"
@@ -66,9 +60,9 @@ function UpcomingEvents() {
       grid={{
         gutter: 16,
         xs: 1,
-        sm: 2,
-        md: 3,
-        lg: 3,
+        sm: 1,
+        md: 2,
+        lg: 2,
         xl: 3,
         xxl: 3
       }}
@@ -86,17 +80,10 @@ function UpcomingEvents() {
                 style={{ height: "32vh", width: "239px" }}
               />
             }
-            // actions={[
-            //   <HeartOutlined />,
-            //   <CheckCircleOutlined />,
-            //   <ShareAltOutlined />,
-            //   <CalendarOutlined />
-            // ]}
-            //    style={{ marginLeft: "90px" }}
           >
             <Meta
               title={item.date}
-              //  description={item.title}
+              description={item.title}
               style={{ textAlign: "center" }}
             />
             {/* <Divider dashed></Divider> */}

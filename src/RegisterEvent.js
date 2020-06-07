@@ -78,9 +78,8 @@ const RegistrationForm = props => {
   var url = "";
   var prevData = {};
   var dis = true;
-  //console.log(props);
-  // console.log(props.history.location.state);
-  if (props.imageUrl != undefined) {
+
+  if (props.imageUrl !== undefined) {
     console.log("i am in");
     url = props.imageUrl;
     prevData = props.values;
@@ -90,13 +89,7 @@ const RegistrationForm = props => {
   const [form] = Form.useForm();
   const [disable, setDisable] = useState(dis);
   const [loading, setLoading] = useState(false);
-  const [visible, setVisible] = useState(props.visible);
   const [imageUrl, setUrl] = useState(url);
-
-  // const handleValues = () => {
-  //   var data = form.getFieldValue();
-  //   props.values = data;
-  // };
 
   const handleChange = info => {
     console.log(info);

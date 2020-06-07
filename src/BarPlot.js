@@ -1,8 +1,7 @@
 import { Chart, Tooltip, Axis, Bar } from "viser-react";
 
-import { Card, Spin } from "antd";
+import { Card } from "antd";
 import React from "react";
-// import "./App.css";
 
 const scale = [
   {
@@ -18,11 +17,6 @@ const BarPlot = ({ data, title, width }) => {
     <Card
       title={title}
       bordered={false}
-      // style={{
-      //   marginTop: "15px",
-      //   //height: "225px",
-      //   marginBottom: "15px"
-      // }}
       bodyStyle={{ height: "200px", padding: "0" }}
     >
       <Chart

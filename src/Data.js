@@ -10,8 +10,6 @@ import {
   Row,
   Col,
   Space,
-  Descriptions,
-  Modal,
   Spin
 } from "antd";
 import Graph from "./BarPlot.js";
@@ -21,17 +19,12 @@ import { SearchOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
 
-const style = { background: "#0092ff", padding: "8px 0" };
-
 const Data = props => {
   const [events, setEvents] = useState([]);
   const [types, setTypes] = useState([]);
   const [date, setDate] = useState([]);
   const [searchText, setsearchText] = useState("");
   const [searchedColumn, setsearchedColumn] = useState("");
-  const [visible, setVisible] = useState(false);
-  const [event, setEvent] = useState({});
-  const [loading, setLoading] = useState(false);
   const [tableloading, settableLoading] = useState(true);
   const [graph1loading, setgraph1Loading] = useState(true);
   const [graph2loading, setgraph2Loading] = useState(true);
@@ -69,7 +62,7 @@ const Data = props => {
         console.log(err);
         setgraph2Loading(false);
       });
-  }, [visible]);
+  }, []);
 
   const getColumnSearchProps = dataIndex => ({
     filterDropdown: ({
@@ -129,28 +122,6 @@ const Data = props => {
         text
       )
   });
-  const handleOk = e => {
-    console.log(visible);
-    setVisible(false);
-    setEvent({});
-  };
-
-  const displayInfo = id => {
-    setLoading(true);
-    let x = id;
-    axios
-      .get(`https://young-inlet-33955.herokuapp.com/events/${x}`)
-      .then(res => {
-        console.log(res.data);
-        setEvent(res.data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.log(err);
-        setLoading(false);
-      });
-    setVisible(true);
-  };
 
   const columns = [
     {
@@ -261,7 +232,7 @@ const Data = props => {
         className="site-page-header"
         style={{ padding: "0px" }}
         ghost={false}
-        // title="Admin Page"
+        title="Admin Page"
         extra={[
           <Text>{props.history.location.state.username}</Text>,
           <Button
@@ -276,8 +247,10 @@ const Data = props => {
       <br />
       <Row>
         <Col
+          style={{ marginTop: "10px" }}
           className="gutter-row"
           xs={{ span: 20, offset: 2 }}
+          s={{ span: 20, offset: 2 }}
           lg={{ span: 9, offset: 2 }}
         >
           <Spin spinning={graph1loading} tip="Loading..." size="large">
@@ -286,8 +259,10 @@ const Data = props => {
         </Col>
 
         <Col
+          style={{ marginTop: "10px" }}
           className="gutter-row"
           xs={{ span: 20, offset: 2 }}
+          s={{ span: 20, offset: 2 }}
           lg={{ span: 10, offset: 1 }}
         >
           <Spin spinning={graph2loading} tip="Loading..." size="large">

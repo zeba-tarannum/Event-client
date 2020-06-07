@@ -36,7 +36,7 @@ function Header() {
             // style={{ backgroundColor: "green", color: "white" }}
             onClick={() => setVisible(true)}
           >
-            Login As Admin
+            Login as admin
           </Button>
         ]}
       />

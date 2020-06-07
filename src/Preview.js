@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Descriptions, Button, Typography, Modal, Spin } from "antd";
+import { Descriptions, Button, Modal, Spin } from "antd";
 import image from "./events_images/ticket.png";
 import fail from "./events_images/failed.png";
-import { CloseCircleTwoTone } from "@ant-design/icons";
 import axios from "axios";
-import { PropertySafetyFilled } from "@ant-design/icons";
-import { render } from "@testing-library/react";
 
 // const { Paragraph } = Typography;
 

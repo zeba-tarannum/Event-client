@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Input, Button, Checkbox } from "antd";
-import { PropertySafetyFilled } from "@ant-design/icons";
 
 const layout = {
   labelCol: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Descriptions, Modal, Spin } from "antd";
 
@@ -6,16 +6,6 @@ function Event({ id }) {
   const [event, setEvent] = useState({});
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:8000/events/${id}`)
-  //     .then(res => {
-  //       console.log(res.data);
-  //       setEvent(res.data);
-  //     })
-  //     .catch(err => console.log(err));
-  // }, []);
 
   const handleOk = e => {
     console.log(visible);
@@ -38,10 +28,11 @@ function Event({ id }) {
 
   return (
     <div>
-      {/* {console.log(event)} */}
+      {/* eslint-disable-next-line */}
       <a onClick={displayInfo}>{id}</a>
       <Modal
         title="Registration Details "
+        style={{ height: "auto" }}
         visible={visible}
         onOk={handleOk}
         onCancel={handleOk}
