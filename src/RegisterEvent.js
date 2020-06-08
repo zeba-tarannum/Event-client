@@ -149,15 +149,15 @@ const RegistrationForm = props => {
         rules={[
           {
             type: "string",
-            message: "The input is not valid E-mail!"
+            message: "The input is a valid Name!"
           },
           {
             required: true,
-            message: "Please input your E-mail!"
+            message: "Please input your Name!"
           },
           {
             pattern: /^[a-zA-Z ]+$/,
-            message: "enter char"
+            message: "Enter characters only"
           },
           {
             min: 3,
